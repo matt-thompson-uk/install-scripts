@@ -22,15 +22,33 @@ if dialog --clear --yesno  "This will setup an Ubuntu based system. Continue?" 0
     sudo apt upgrade -y
   fi
 
-  dialog --clear --msgbox "Step 2 - Setup the PPA for appimagelauncher and install the app." 0 0
-  clear
-  sudo add-apt-repository ppa:appimagelauncher-team/stable -y
-  sudo apt-get update
-  sudo apt install appimagelauncher -y
+  if dialog --clear --yesno "Step 2 - Setup the PPA for appimagelauncher and install the app." 0 0 # change this to a msgbox and get rid of the if
+    clear
+    sudo add-apt-repository ppa:appimagelauncher-team/stable -y
+    sudo apt-get update
+    sudo apt install appimagelauncher -y
 
-  dialog --clear --msgbox "Step 3 - You need to download appimages for BitWarden, pCloud and Streamlink Twitch Gui. Firefox will load when OK is clicked." 0 0
+    dialog --clear --msgbox "Step 3 - You need to download appimages for BitWarden, pCloud and Streamlink Twitch Gui. Firefox will load when OK is clicked." 0 0
 
-  firefox "https://bitwarden.com/download/" "https://www.pcloud.com/download-free-online-cloud-file-storage.html" "https://github.com/streamlink/streamlink-twitch-gui/releases" > /dev/null 2>&1 &
+    firefox "https://bitwarden.com/download/" "https://www.pcloud.com/download-free-online-cloud-file-storage.html" "https://github.com/streamlink/streamlink-twitch-gui/releases" > /dev/null 2>&1 &
 
-  dialog --clear --msgbox "Step 4 - You need to install Bitwarden and pCloud appimages with appimagelauncher. When pCloud has finished syncing, go to the next step." 0 0
+    dialog --clear --msgbox "Step 4 - You need to install Bitwarden and pCloud appimages with appimagelauncher. When pCloud has finished syncing, go to the next step." 0 0
+  fi
+
+  dialog --clear --msgbox "Step 5 - Install lots of things ..... " 0 0
+
+  sudo apt install apt-transport-https curl -y
+
+  sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+
+  echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+
+  sudo apt update
+  sudo apt install synaptic brave-browser python3-pip neofetch powerline fonts-powerline terminator fortune-mod fish mpv fonts-inter -y
+
+# copy configs
+# ask if to do gnomesettings
+# gnome themes
+# kde themes
+
 fi
