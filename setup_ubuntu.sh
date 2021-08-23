@@ -36,16 +36,24 @@ if dialog --clear --yesno  "This will setup an Ubuntu based system. Continue?" 0
   fi
 
   dialog --clear --msgbox "Step 5 - Install lots of things ..... " 0 0
-
+  clear
   sudo apt install apt-transport-https curl -y
-
   sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-
   echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-
   sudo apt update
   sudo apt install synaptic brave-browser python3-pip neofetch powerline fonts-powerline terminator fortune-mod fish mpv fonts-inter -y
 
+  dialog --clear --msgbox "Step 6 - Copy configs and do misc settings." 0 0
+  clear
+  chsh -s /usr/bin/fish
+  mkdir ~/.config/fish
+  mkdir ~/.config/variety
+  cp config.fish.ubuntu ~/.config/fish/
+  mv ~/.config/config.fish.ubuntu ~.config/fish/config.fish
+  cp variety.conf ~/.config/variety
+  mkdir -p ~/.config/terminator/plugins
+  sudo pip3 install requests
+  wget https://git.io/v5Zww -O $HOME"/.config/terminator/plugins/terminator-themes.py"
 # copy configs
 # ask if to do gnomesettings
 # gnome themes
