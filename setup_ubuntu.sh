@@ -46,10 +46,11 @@ if dialog --clear --yesno  "This will setup an Ubuntu based system. Continue?" 0
   sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
   echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
   sudo apt update
-  sudo apt install synaptic brave-browser python3-pip neofetch powerline fonts-powerline terminator fortune-mod fish mpv fonts-inter -y
+  sudo apt install synaptic brave-browser python3-pip neofetch powerline fonts-powerline terminator fortune-mod variety gimp fish mpv fonts-inter -y
 
-  dialog --clear --msgbox "Step 7 - Copy configs and do misc settings." 0 0
+  dialog --clear --msgbox "Step 7 - Copy configs, set default shell and do misc settings." 0 0
   clear
+  echo "Changing default shell to fish..."
   chsh -s /usr/bin/fish
   mkdir ~/.config/fish
   mkdir ~/.config/variety
@@ -70,24 +71,32 @@ if dialog --clear --yesno  "This will setup an Ubuntu based system. Continue?" 0
 
   if dialog --clear --yesno "Step 9 - Do you want to install GTK3 themes?" 0 0; then
     clear
-    sudo apt install gkt2-engines-murrine gtk2-engines-pixbuf -y
+    sudo apt install gtk2-engines-murrine gtk2-engines-pixbuf -y
     cd ..
     git clone https://github.com/vinceliuice/Qogir-theme.git
     cd Qogir-theme
     ./install.sh
     cd ..
+
+    git clone https://github.com/vinceliuice/Qogir-icon-theme.git
+    cd Qogir-icon-theme
+    ./install.sh
+    cd ..
+
     git clone https://github.com/vinceliuice/Orchis-theme.git
     cd Orchis-theme
     ./install.sh
     cd ..
+
     git clone https://github.com/vinceliuice/Tela-icon-theme
     cd Tela-icon-theme
     ./install.sh -a
     cd ..
+
     cd install-scripts
   fi
 
-  if dialog --clear --yesno "Step 10 - Do you want to install Plasma themes?" 0 0; then
+  if dialog --clear --yesno "Step 10 - Do you want to install Plasma themes? They'll get automatically updated if you install them from Discover..." 0 0; then
     dialog --clear --msgbox "Not done yet...." 0 0
   fi
 
