@@ -46,7 +46,7 @@ if dialog --clear --yesno  "This will setup an Ubuntu based system. Continue?" 0
   sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
   echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
   sudo apt update
-  sudo apt install synaptic brave-browser python3-pip neofetch powerline fonts-powerline terminator fortune-mod variety gimp fish mpv fonts-inter -y
+  sudo apt install synaptic brave-browser python3-pip neofetch powerline fonts-powerline terminator fortune-mod variety gimp fish mpv fonts-inter fonts-jetbrains-mono -y
 
   dialog --clear --msgbox "Step 7 - Copy configs, set default shell and do misc settings." 0 0
   clear
@@ -96,12 +96,9 @@ if dialog --clear --yesno  "This will setup an Ubuntu based system. Continue?" 0
     cd install-scripts
   fi
 
-  if dialog --clear --yesno "Step 10 - Do you want to install Plasma themes? They'll get automatically updated if you install them from Discover..." 0 0; then
+  if dialog --clear --yesno "Step 10 - Do you want to install Plasma themes? It might be better to install them from Discover, they'll get automatically updated..." 0 0; then
     dialog --clear --msgbox "Not done yet...." 0 0
   fi
 
-# gnome stuff - settings and tweaks
-# gnome themes
-# kde themes
 
 fi
