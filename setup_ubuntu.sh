@@ -22,7 +22,7 @@ if dialog --clear --yesno  "This will setup an Ubuntu based system. Continue?" 0
     sudo apt upgrade -y
   fi
 
-  if dialog --clear --yesno "Step 2 - Setup the PPA for appimagelauncher and install the app." 0 0 # change this to a msgbox and get rid of the if
+  if dialog --clear --yesno "Step 2 - Setup the PPA for appimagelauncher and install the app." 0 0; then # change this to a msgbox and get rid of the if
     clear
     sudo add-apt-repository ppa:appimagelauncher-team/stable -y
     sudo apt-get update
