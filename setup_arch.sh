@@ -20,7 +20,7 @@ if dialog --clear --yesno  "This will setup an Arch based system. Pcloud must al
 
   dialog  --clear --msgbox "Step 3 - install lots of things........." 0 0
   clear
-  yay -S brave-bin powerline powerline-fonts variety neofetch fortune-mod fish mpv streamlink-twitch-gui gimp inter-font ttf-jetbrains-mono --noconfirm
+  yay -S brave-bin powerline powerline-fonts variety neofetch fortune-mod fish mpv streamlink-twitch-gui gimp inter-font ttf-jetbrains-mono lsd ttf-nerd-fonts-symbols --noconfirm
 
   dialog --clear --msgbox "Step 4 - copy configs and set default shell" 0 0
   clear
