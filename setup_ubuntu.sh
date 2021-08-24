@@ -97,8 +97,34 @@ if dialog --clear --yesno  "This will setup an Ubuntu based system. Continue?" 0
   fi
 
   if dialog --clear --yesno "Step 10 - Do you want to install Plasma themes? It might be better to install them from Discover, they'll get automatically updated..." 0 0; then
-    dialog --clear --msgbox "Not done yet...." 0 0
+
+    git clone https://github.com/vinceliuice/Orchis-kde.git
+    cd Orchis-kde
+    ./install.sh
+    cd ..
+
+    git clone https://github.com/vinceliuice/Qogir-kde
+    cd Qogir-kde
+    ./install.sh
+    cd ..
+
+    git clone https://github.com/vinceliuice/Qogir-kde
+    cd Qogir-kde
+    ./install.sh
+    cd ..
+
+    git clone https://github.com/vinceliuice/Qogir-icon-theme.git
+    cd Qogir-icon-theme
+    ./install.sh
+    cd ..
+
+    git clone https://github.com/vinceliuice/Tela-icon-theme
+    cd Tela-icon-theme
+    ./install.sh -a
+    cd ..
+
   fi
 
+   dialog --clear --msgbox "All done. Configure as necessary and enjoy!" 0 0
 
 fi
