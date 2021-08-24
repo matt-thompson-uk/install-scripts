@@ -98,6 +98,8 @@ if dialog --clear --yesno  "This will setup an Ubuntu based system. Continue?" 0
 
   if dialog --clear --yesno "Step 10 - Do you want to install Plasma themes? It might be better to install them from Discover, they'll get automatically updated..." 0 0; then
 
+    mkdir -p ~/.local/share/plasma/plasmoids
+
     git clone https://github.com/vinceliuice/Orchis-kde.git
     cd Orchis-kde
     ./install.sh
