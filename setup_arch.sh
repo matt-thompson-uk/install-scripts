@@ -10,15 +10,18 @@ if ! command -v dialog >/dev/null; then
 fi
 
 if dialog --clear --msgbox  "This will setup an Arch based system." 0 0; then
+
   if dialog --clear --yesno "Step 1 - Do you want to update the system?" 0 0; then
     clear
     sudo pacman -Syu 	
   fi
+
   dialog --clear --msgbox "Step 2 - install yay, base-devel, pcloud and bitwarden" 0 0
   clear
-  sudo pacman -S yay base-devel pcloud-drive bitwarden-bin --noconfirm
+  sudo pacman -S yay base-devel --noconfirm
+  yay -S pcloud-drive bitwarden-bin --noconfirm
 
-  dialog --clear msgbox "Step 3 - Now, log in to pcloud and setup sync. Press enter enhen pcloud is fully synced." 0 0
+  dialog --clear msgbox "Step 3 - Now, log in to pcloud and setup sync. Press enter when pcloud is fully synced." 0 0
 
   dialog  --clear --msgbox "Step 4 - install lots of things........." 0 0
   clear
