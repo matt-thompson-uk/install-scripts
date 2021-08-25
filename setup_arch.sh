@@ -42,7 +42,7 @@ if dialog --clear --msgbox  "This will setup an Arch based system." 0 0; then
 
   if dialog --clear --yesno "Step 7 - Install Plasma themes/icons?" 0 0; then
     clear
-    yay -S qogir-icon-theme qogir-kde-theme-git orchi-kde-theme-git tela-icon-theme --noconfirm
+    yay -S qogir-icon-theme-git qogir-kde-theme-git orchis-kde-theme-git tela-icon-theme --noconfirm
   fi
 
   dialog --clear --msgbox "All done. Configure as necessary and enjoy!" 0 0
