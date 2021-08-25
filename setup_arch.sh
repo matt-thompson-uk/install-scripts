@@ -9,7 +9,7 @@ if ! command -v dialog >/dev/null; then
     sudo pacman -S dialog --noconfirm
 fi
 
-if dialog --clear --yesno  "This will setup an Arch based system." 0 0; then
+if dialog --clear --msgbox  "This will setup an Arch based system." 0 0; then
   if dialog --clear --yesno "Step 1 - Do you want to update the system?" 0 0; then
     clear
     sudo pacman -Syu 	
@@ -18,7 +18,7 @@ if dialog --clear --yesno  "This will setup an Arch based system." 0 0; then
   clear
   sudo pacman -S yay base-devel pcloud-drive bitwarden-bin --noconfirm
 
-  dialog --clear msgbox "Step 3 - Now, log in to pcloud and setup sync. Press enter enhen pcloud is fully synced."
+  dialog --clear msgbox "Step 3 - Now, log in to pcloud and setup sync. Press enter enhen pcloud is fully synced." 0 0
 
   dialog  --clear --msgbox "Step 4 - install lots of things........." 0 0
   clear
