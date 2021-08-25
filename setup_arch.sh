@@ -9,20 +9,22 @@ if ! command -v dialog >/dev/null; then
     sudo pacman -S dialog --noconfirm
 fi
 
-if dialog --clear --yesno  "This will setup an Arch based system. Pcloud must already be installed and fully synced! If not, install pcloud-drive and bitwarden-bin and restart this. Continue?" 0 0; then
+if dialog --clear --yesno  "This will setup an Arch based system." 0 0; then
   if dialog --clear --yesno "Step 1 - Do you want to update the system?" 0 0; then
     clear
     sudo pacman -Syu 	
   fi
-  dialog --clear --msgbox "Step 2 - install yay and base-devel" 0 0
+  dialog --clear --msgbox "Step 2 - install yay, base-devel, pcloud and bitwarden" 0 0
   clear
-  sudo pacman -S yay base-devel --noconfirm
+  sudo pacman -S yay base-devel pcloud-drive bitwarden-bin --noconfirm
 
-  dialog  --clear --msgbox "Step 3 - install lots of things........." 0 0
+  dialog --clear msgbox "Step 3 - Now, log in to pcloud and setup sync. Press enter enhen pcloud is fully synced."
+
+  dialog  --clear --msgbox "Step 4 - install lots of things........." 0 0
   clear
   yay -S brave-bin powerline powerline-fonts variety neofetch fortune-mod fish mpv streamlink-twitch-gui gimp inter-font ttf-jetbrains-mono lsd ttf-nerd-fonts-symbols --noconfirm
 
-  dialog --clear --msgbox "Step 4 - copy configs and set default shell" 0 0
+  dialog --clear --msgbox "Step 5 - copy configs and set default shell" 0 0
   clear
   chsh -s /usr/bin/fish
   mkdir ~/.config/fish
@@ -30,12 +32,12 @@ if dialog --clear --yesno  "This will setup an Arch based system. Pcloud must al
   cp config.fish ~/.config/fish/
   cp variety.conf ~/.config/variety
 
-  if dialog --clear --yesno "Step 5 - Install Gtk themes/icons ?" 0 0; then
+  if dialog --clear --yesno "Step 6 - Install Gtk themes/icons ?" 0 0; then
     clear
     yay -S qogir-icon-theme-git qogir-gtk-theme-git orchis-theme-git tela-icon-theme --noconfirm
   fi
 
-  if dialog --clear --yesno "Step 6 - Install Plasma themes/icons?" 0 0; then
+  if dialog --clear --yesno "Step 7 - Install Plasma themes/icons?" 0 0; then
     clear
     yay -S qogir-icon-theme qogir-kde-theme-git orchi-kde-theme-git tela-icon-theme --noconfirm
   fi
