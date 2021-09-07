@@ -15,7 +15,7 @@ if ! command -v dialog >/dev/null; then
     sudo apt install dialog -y
 fi
 
-if dialog --clear --yesno  "This will setup an Ubuntu based system. Continue?" 0 0; then
+if dialog --clear --yesno  "This will setup a Zorin system. Continue?" 0 0; then
 
   dialog --clear --msgbox "Step 1  - Disable unattened upgrades."
   clear
@@ -47,6 +47,8 @@ if dialog --clear --yesno  "This will setup an Ubuntu based system. Continue?" 0
   echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
   sudo apt update
   sudo apt install synaptic brave-browser python3-pip neofetch powerline fonts-powerline terminator fortune-mod variety gimp fish mpv fonts-inter
+  sudo pip3 install streamlink
+  sudo pip3 install bpytop --upgrade
 
   dialog --clear --msgbox "Step 7 - Copy configs, set default shell and do misc settings." 0 0
   clear

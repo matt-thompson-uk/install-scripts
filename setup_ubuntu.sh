@@ -48,6 +48,9 @@ if dialog --clear --yesno  "This will setup an Ubuntu based system. Continue?" 0
   sudo apt update
   sudo apt install synaptic brave-browser python3-pip neofetch powerline fonts-powerline terminator fortune-mod variety gimp fish mpv fonts-inter fonts-jetbrains-mono -y
 
+  sudo pip3 install streamlink
+  sudo pip3 install bpytop --upgrade
+
   dialog --clear --msgbox "Step 7 - Copy configs, set default shell and do misc settings." 0 0
   clear
   echo "Changing default shell to fish..."
