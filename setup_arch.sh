@@ -19,7 +19,7 @@ if dialog --clear --msgbox  "This will setup an Arch based system." 0 0; then
   dialog --clear --msgbox "Step 2 - install yay, base-devel, pcloud and bitwarden" 0 0
   clear
   sudo pacman -S yay base-devel --noconfirm
-  yay -S pcloud-drive bitwarden-bin --noconfirm
+  yay -S pcloud-drive bitwarden --noconfirm
 
   dialog --clear --msgbox "Step 3 - Now, log in to pcloud and setup sync. Press enter when pcloud is fully synced." 0 0
 
