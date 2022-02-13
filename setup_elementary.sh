@@ -27,8 +27,20 @@ if dialog --clear --yesno  "This will setup an Elementary OS system. Continue?" 
     sudo apt upgrade -y
   fi
 
+ dialog --clear --msgbox "Step 2.5 - setup Appindicator support. Download the reqd .deb file (to ~/Downloads) and click Ok" 0 0
+  sudo apt-get install libwingpanel-dev indicator-application -y
+
+  flatpak run org.gnome.Epiphany "https://github.com/Lafydev/wingpanel-indicator-ayatana/blob/master/com.github.lafydev.wingpanel-indicator-ayatana_2.0.7_amd64.deb"
+  dialog --clear --msgbox "Step 2.6 - Click Ok to install install the .deb" 0 0
+  sudo dpkg -i ~/Downloads/com.github.lafydev.wingpanel*.deb
+  cp /etc/xdg/autostart/indicator-application.desktop ~/.config/autostart/
+  sed -i 's/^OnlyShowIn.*/OnlyShowIn=Unity;GNOME;Pantheon;/' ~/.config/autostart/indicator-application.desktop
+  dialog --clear --msgbox "Step 2.75 - Nano will launch when Ok is clicked. Add 'Pantheon;'' to the end of  OnlyShowIn line.." 0 0
+  sudo nano /etc/xdg/autostart/indicator-application.desktop 
+  
   if dialog --clear --yesno "Step 3 - Setup the PPA for appimagelauncher and install the app." 0 0; then # change this to a msgbox and get rid of the if
     clear
+    sudo apt install software-properties-common -y
     sudo add-apt-repository ppa:appimagelauncher-team/stable -y
     sudo apt-get update
     sudo apt install appimagelauncher -y
@@ -46,7 +58,7 @@ if dialog --clear --yesno  "This will setup an Elementary OS system. Continue?" 
   sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
   echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
   sudo apt update
-  sudo apt install synaptic brave-browser python3-pip neofetch powerline fonts-powerline terminator fortune-mod variety gimp fish mpv -y
+  sudo apt install synaptic brave-browser python3-pip neofetch powerline fonts-powerline terminator fortune-mod variety gimp fish mpv jq -y
 
   sudo pip3 install streamlink
   sudo pip3 install bpytop --upgrade
@@ -75,14 +87,6 @@ if dialog --clear --yesno  "This will setup an Elementary OS system. Continue?" 
   unzip ~/Sync/conkyimages.zip -d ~/.config/conky/
   cp ~/Sync/conky.desktop ~/.config/autostart/
 
-  dialog --clear --msgbox "Step 8 - setup Appindicator support. Download the reqd .deb file (to ~/Downloads) and click Ok" 0 0
-  flatpak run org.gnome.Epiphany "https://github.com/Lafydev/wingpanel-indicator-ayatana/blob/master/com.github.lafydev.wingpanel-indicator-ayatana_2.0.7_amd64.deb"
-  dialog --clear --msgbox "Step 8.5 - Click Ok to install install the .deb" 0 0
-  sudo dpkg -i ~/Downloads/com.github.lafydev.wingpanel*.deb
-  cp /etc/xdg/autostart/indicator-application.desktop ~/.config/autostart/
-  sed -i 's/^OnlyShowIn.*/OnlyShowIn=Unity;GNOME;Pantheon;/' ~/.config/autostart/indicator-application.desktop
-  dialog --clear --msgbox "Step 8.75 - Nano will launch when Ok is clicked. Add 'Pantheon;'' to the end of  OnlyShowIn line.." 0 0
-  sudo nano /etc/xdg/autostart/indicator-application.desktop 
   dialog --clear --msgbox "All done. Install Libreoffice from flathub then configure everything as necessary. Reboot and enjoy!" 0 0
 
 fi
