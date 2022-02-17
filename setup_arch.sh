@@ -37,7 +37,12 @@ if dialog --clear --msgbox  "This will setup an Arch based system." 0 0; then
 
   if dialog --clear --yesno "Step 6 - Install Gtk themes/icons ?" 0 0; then
     clear
-    yay -S qogir-icon-theme-git qogir-gtk-theme-git orchis-theme-git tela-icon-theme chromeos-gtk-theme-git canta-icon-theme-git --noconfirm
+    yay -S qogir-icon-theme-git qogir-gtk-theme-git orchis-theme-git tela-icon-theme chromeos-gtk-theme-git canta-icon-theme-git libsass sassc--noconfirm
+    git clone https://github.com/vinceliuice/Graphite-gtk-theme.git
+    cd Graphite-gtk-theme
+    ./install.sh -t all --tweaks rimless
+    ./install.sh -t all --tweaks rimless -s compact
+    cd ..
   fi
 
   if dialog --clear --yesno "Step 7 - Install Plasma themes/icons?" 0 0; then
