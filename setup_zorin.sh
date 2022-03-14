@@ -129,6 +129,6 @@ if dialog --clear --yesno  "This will setup a Zorin system. Continue?" 0 0; then
 
   fi
 
-   dialog --clear --msgbox "All done. Configure as necessary and enjoy!" 0 0
+   dialog --clear --msgbox "All done. Tip: to stop the Blur My Shell extension from murdering the top panel, do the following - Go to ~/.local/share/gnome-shell/extensions/blur-my-shell.../ and open panel.js in an editor. Search for 'transparent-panel' and comment out (with //) the two lines that add and remove this class style. Save the changes and log out and back in (or just use Alt-F2 and r to reload gnome-shell) and all should be good!" 0 0
 
 fi
