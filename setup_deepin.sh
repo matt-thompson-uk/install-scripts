@@ -61,7 +61,8 @@ if dialog --clear --yesno  "This will setup a Deepin based system. Continue?" 0 
   unzip ~/Sync/conkyimages.zip -d ~/.config/conky/
   cp ~/Sync/conky.desktop ~/.config/autostart/
   
-  sudo cp -r ~/Sync/variety_faves/* /usr/share/wallpapers/deepin
+  mkdir -p ~/.config/deepin/dde/daemon/appearance/custom-wallpapers
+  sudo cp -r ~/Sync/variety_faves/* ~/.config/deepin/dde/daemon/appearance/custom-wallpapers
 	
   # todo don't install variety
 #	  copy variety faves imageas to /usr/share/wallpapers/deepin
