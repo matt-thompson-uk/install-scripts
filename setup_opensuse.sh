@@ -39,7 +39,7 @@ if dialog --clear --msgbox  "This will setup an OpenSuse based system." 0 0; the
   sudo zypper install curl
   sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
   sudo zypper addrepo --refresh https://brave-browser-rpm-release.s3.brave.com/x86_64/ brave-browser
-  sudo zypper install  brave-browser latte-dock kvantum-manager powerline powerline-fonts variety neofetch fish mpv gimp inter-fonts adobe-sourcecodepro-fonts fortune lib libva-vdpau-driver
+  sudo zypper install  brave-browser latte-dock kvantum-manager powerline powerline-fonts variety neofetch fish mpv gimp inter-fonts adobe-sourcecodepro-fonts fortune lib libva-vdpau-driver libqt4 streamlink
 
   dialog --clear --msgbox "Step 7 - copy configs and set default shell" 0 0
   clear
