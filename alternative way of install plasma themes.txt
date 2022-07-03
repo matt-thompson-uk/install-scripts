@@ -1,0 +1,26 @@
+ Do what the aur package does i.e. don't use install.sh but instead copy the files directly to the target directories  i.e.
+ Qogir (at least) has a plasma style that follows the colour scheme...
+
+   mkdir -p ${pkgdir}/usr/share/aurorae
+   cp -r  ${srcdir}/${_gitname}/aurorae/themes/ ${pkgdir}/usr/share/aurorae
+
+   mkdir -p ${pkgdir}/usr/share/color-schemes
+   cp -r ${srcdir}/${_gitname}/color-schemes ${pkgdir}/usr/share
+
+   mkdir -p ${pkgdir}/usr/share/plasma/desktoptheme/
+   cp -r ${srcdir}/${_gitname}/plasma/desktoptheme ${pkgdir}/usr/share/plasma
+
+   mkdir -p ${pkgdir}/usr/share/plasma/look-and-feel/
+   cp -r ${srcdir}/${_gitname}/plasma/look-and-feel/ ${pkgdir}/usr/share/plasma
+
+   mkdir -p ${pkgdir}/usr/share/sddm/themes/Qogir
+   cp -r ${srcdir}/${_gitname}/sddm/Qogir ${pkgdir}/usr/share/sddm/themes
+
+   mkdir -p ${pkgdir}/usr/share/Kvantum/
+   cp -r ${srcdir}/${_gitname}/Kvantum ${pkgdir}/usr/share
+
+   mkdir -p ${pkgdir}/usr/share/wallpapers
+   rm -r ${srcdir}/${_gitname}/wallpaper/src
+   cp -r ${srcdir}/${_gitname}/wallpaper/* ${pkgdir}/usr/share/wallpapers
+
+   - this allows plasma to recognize that Qogir (at least) has a plasma style that follows the colour scheme...
